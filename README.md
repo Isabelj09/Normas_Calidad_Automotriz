@@ -146,16 +146,7 @@ python -m app.prompt_registry --promote 2
 **Observa:** en tu siguiente pregunta (puede tardar hasta 30 s en notarse) la barra lateral del chat muestra **Prompt resuelto: `asistente_rrhh/2`**, sin reiniciar ni tocar código. En MLflow → **Prompts**, el alias `@production` ahora está en la v2.
 **Entiende:** separar *qué versión existe* (registro) de *cuál está en producción* (alias) permite cambiar y revertir de forma segura.
 
-### Paso 9 · Crear tu propia versión
-**Haz:** crea `app/prompts/v3_mi_prompt.txt` (debe incluir `{question}` y `{context}`), luego:
-```bash
-python -m app.prompt_registry          # → asistente_rrhh v3 (@v3_mi_prompt)
-PROMPT_VERSION=prompts:/asistente_rrhh/3 python app/run_eval.py
-```
-**Observa:** la v3 aparece en el registro, en el selector de prompts del chat y en el dashboard junto a las demás.
-**Entiende:** este es el [ciclo de mejora](#-el-ciclo-de-mejora) completo: editar → registrar → evaluar → comparar → promover.
-
-### Paso 10 · El quality gate y la automatización
+### Paso 9 · El quality gate y la automatización
 **Haz:**
 ```bash
 pytest tests/test_run_eval.py -v
